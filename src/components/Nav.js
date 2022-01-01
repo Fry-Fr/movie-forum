@@ -1,6 +1,6 @@
 function Nav() {
     return (
-        <nav>
+        <nav className="nav-container">
             <h1>Navigation:</h1>
         </nav>
     )

@@ -7,17 +7,18 @@
   overflow: hidden;
 }
 
-nav {
+.nav-container {
   border: 3px solid blueviolet;
 }
 
-nav h1 {
+.nav-container h1 {
   text-align: left;
   color: red;
   margin: 0;
 }
 
-header {
+.header-container {
+  /* simple css */
   color: aqua;
   border: 3px solid red;
 }
