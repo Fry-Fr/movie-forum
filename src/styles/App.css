@@ -9,16 +9,11 @@
 
 .nav-container {
   border: 3px solid blueviolet;
-}
-
-.nav-container h1 {
   text-align: left;
   color: red;
-  margin: 0;
 }
 
 .header-container {
-  /* simple css */
   color: aqua;
   border: 3px solid red;
 }
