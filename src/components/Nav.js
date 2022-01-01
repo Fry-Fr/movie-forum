@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom';
+
 function Nav() {
     return (
         <nav className="nav-container">
-            <h1>Navigation:</h1>
+            <Link to="">My Movies</Link>
+            <Link to="">worth the time</Link>
+            <Link to="">waste of time</Link>
         </nav>
     )
 }
