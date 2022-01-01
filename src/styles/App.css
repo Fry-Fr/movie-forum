@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  overflow: hidden;
+}
+
+nav {
+  border: 3px solid blueviolet;
+}
+
+nav h1 {
+  text-align: left;
+  color: red;
+  margin: 0;
+}
+
+header {
+  color: aqua;
+  border: 3px solid red;
+}
