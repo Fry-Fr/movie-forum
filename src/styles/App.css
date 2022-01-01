@@ -11,9 +11,32 @@
   border: 3px solid blueviolet;
   text-align: left;
   color: red;
+  /* styles keep */
+  width: 75%;
+}
+
+.nav-container a {
+  color: rgba(245, 245, 220, 0.787);
+  text-decoration: none;
+  font-size: 75%;
+}
+
+.nav-container a:nth-child(1)::after,
+.nav-container a:nth-child(2)::after {
+  content: " | ";
 }
 
 .header-container {
   color: aqua;
   border: 3px solid red;
+  /* keep */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container h2 {
+  width: 75%;
 }
