@@ -55,3 +55,22 @@
   width: 100%;
   max-width: 1200px;
 }
+
+.main-container {
+  position: relative;
+  flex: 1;
+  color: rgba(245, 245, 220, 0.787);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.forum-container {
+  position: absolute;
+  border: 3px solid plum;
+  background-color: rgba(113, 253, 206, 0.404);
+  width: 75%;
+  height: 100%;
+}
