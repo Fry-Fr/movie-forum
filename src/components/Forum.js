@@ -1,8 +1,13 @@
+import { useState } from "react";
+import MovieCard from "./MovieCard";
+
 function Forum() {
+    const [loadedComponent, setLoadedComponent] = useState('<My Movies/>');
     return (
         <main className="main-container">
             <div className="forum-container">
-                MAIN UI IN MAIN COMPONENT
+                <p>{loadedComponent}</p>
+                <MovieCard/>
             </div>
         </main>
     )
