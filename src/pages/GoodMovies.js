@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 
-function GoodMovies({ setCompon }) {
+function GoodMovies({ setCompon, apiMovies }) {
     useEffect(() => {
         setCompon("<Good Movies/>")
     },[setCompon])
 
     return (
         <div>
-            <MovieCard/>
+            <MovieCard movies={apiMovies.filter(movie => movie.good === true)} />
         </div>
     )
 }

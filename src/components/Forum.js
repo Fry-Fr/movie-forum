@@ -5,22 +5,44 @@ import MyMovies from "../pages/MyMovies";
 import GoodMovies from "../pages/GoodMovies";
 import NotGoodMovies from "../pages/NotGoodMovies";
 
+export const movies = [
+    {
+        title: "Matrix",
+        rating: "8.7",
+        good: true,
+        description: "Thomas A. Anderson is a man living two lives. By day he is an average computer programmer and by night a hacker known as Neo. Neo has always questioned his reality, but the truth is far beyond his imagination."
+    },
+    {
+        title: "The Matrix Reloaded",
+        rating: "7.2",
+        good: false,
+        description: "Movie DIn this second adventure, Neo and the rebel leaders estimate that they have 72 hours until Zion falls under siege to the Machine Army."
+    },
+    {
+        title: "Matrix Ressurection",
+        rating: 0,
+        good: false,
+        description: "The plot is currently unknown."
+    }
+  ];
+
 function Forum() {
+    const [apiMovies, setApiMovies] = useState(movies);
     const [loadedComponent, setLoadedComponent] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
         navigate("/my_movies");
-    },[navigate])
+    },[])
     
     return (
         <main className="main-container">
             <div className="forum-container">
                 <p>{loadedComponent}</p>
                 <Routes>
-                    <Route path="/my_movies" element={<MyMovies setCompon={setLoadedComponent} />} />
-                    <Route path="/good" element={<GoodMovies setCompon={setLoadedComponent} />} />
-                    <Route path="/not_good" element={<NotGoodMovies setCompon={setLoadedComponent} />} />
+                    <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
+                    <Route path="/good" element={<GoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
+                    <Route path="/not_good" element={<NotGoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                 </Routes>
             </div>
         </main>
