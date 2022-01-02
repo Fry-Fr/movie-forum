@@ -4,6 +4,7 @@ import {Routes, Route, useNavigate} from "react-router-dom";
 import MyMovies from "../pages/MyMovies";
 import GoodMovies from "../pages/GoodMovies";
 import NotGoodMovies from "../pages/NotGoodMovies";
+import Movie from "../pages/Movie";
 
 export const movies = [
     {
@@ -50,6 +51,7 @@ function Forum() {
                     <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                     <Route path="/good" element={<GoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                     <Route path="/not_good" element={<NotGoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
+                    <Route path="/movie/:id" element={<Movie apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                 </Routes>
             </div>
         </main>
