@@ -99,6 +99,10 @@
   filter: sepia(50%);
 }
 
+.movie-card-link {
+  text-decoration: none;
+}
+
 .movie-card span:nth-child(2) {
   position: absolute;
   left: 45%;
