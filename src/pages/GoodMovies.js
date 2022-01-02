@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import MovieCard from "../components/MovieCard";
 
-function GoodMovies(props) {
+function GoodMovies({ setCompon }) {
     useEffect(() => {
-        props.compon("<Good Movies/>")
-    },[])
+        setCompon("<Good Movies/>")
+    },[setCompon])
 
     return (
         <div>

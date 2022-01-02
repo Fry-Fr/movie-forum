@@ -11,16 +11,16 @@ function Forum() {
 
     useEffect(() => {
         navigate("/my_movies");
-    },[])
+    },[navigate])
     
     return (
         <main className="main-container">
             <div className="forum-container">
                 <p>{loadedComponent}</p>
                 <Routes>
-                    <Route path="/my_movies" element={<MyMovies compon={setLoadedComponent} />} />
-                    <Route path="/good" element={<GoodMovies compon={setLoadedComponent} />} />
-                    <Route path="/not_good" element={<NotGoodMovies compon={setLoadedComponent} />} />
+                    <Route path="/my_movies" element={<MyMovies setCompon={setLoadedComponent} />} />
+                    <Route path="/good" element={<GoodMovies setCompon={setLoadedComponent} />} />
+                    <Route path="/not_good" element={<NotGoodMovies setCompon={setLoadedComponent} />} />
                 </Routes>
             </div>
         </main>
