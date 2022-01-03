@@ -16,8 +16,11 @@ function Movie({ setCompon, apiMovies }) {
         <div className="movie-container">
             {!movie ? undefined : 
             <>
-            <div>{movie.rating}</div>
-            <div>{movie.description}</div>
+            <div className="movie-page-body">
+                <div>IDMB Rating: {movie.rating}</div>
+                <div>Description:<br/>{movie.description}</div>
+            </div>
+                {!movie.image_url ? <div className="empty-image">Image not found</div> : <img src={movie.image_url} alt="movie poster" className="movie-poster"/>}
             </>
             }
         </div>

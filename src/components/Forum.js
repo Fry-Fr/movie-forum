@@ -9,6 +9,7 @@ import Movie from "../pages/Movie";
 export const movies = [
     {
         id: 1,
+        image_url: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
         title: "Matrix",
         rating: "8.7",
         good: true,
@@ -16,6 +17,7 @@ export const movies = [
     },
     {
         id: 2,
+        image_url: "https://m.media-amazon.com/images/M/MV5BODE0MzZhZTgtYzkwYi00YmI5LThlZWYtOWRmNWE5ODk0NzMxXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
         title: "The Matrix Reloaded",
         rating: "7.2",
         good: false,
@@ -23,6 +25,7 @@ export const movies = [
     },
     {
         id: 3,
+        image_url: "",
         title: "Matrix Ressurection",
         rating: 0,
         good: false,
