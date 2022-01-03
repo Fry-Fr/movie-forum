@@ -8,7 +8,7 @@ function NotGoodMovies({ setCompon, apiMovies }) {
 
     return (
         <div>
-            <MovieCard movies={apiMovies.filter(movie => movie.good === false)} />
+            <MovieCard movies={apiMovies.filter(movie => movie.is_good === false)} />
         </div>
     )
 }
