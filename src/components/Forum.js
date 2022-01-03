@@ -6,8 +6,9 @@ import MyMovies from "../pages/MyMovies";
 import GoodMovies from "../pages/GoodMovies";
 import NotGoodMovies from "../pages/NotGoodMovies";
 import Movie from "../pages/Movie";
+import SearchBox from "./SearchBox";
 
-function Forum() {
+function Forum({ sb }) {
     const [apiMovies, setApiMovies] = useState([]);
     const [loadedComponent, setLoadedComponent] = useState('');
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function Forum() {
     return (
         <main className="main-container">
             <div className="forum-container">
-                <p>{loadedComponent}</p>
+                {!sb ? <p>{loadedComponent}</p> : <SearchBox />}
                 <Routes>
                     <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                     <Route path="/good" element={<GoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
