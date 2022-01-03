@@ -176,3 +176,41 @@
   margin-bottom: 1rem;
   padding: 1rem;
 }
+
+.search-result {
+  padding: .5rem 1rem 1rem;
+}
+
+.search-result div:last-child {
+  margin-bottom: 0;
+}
+
+.search-result-card {
+  color: rgb(192, 188, 188);
+  filter: sepia(75%);
+  font-size: 60%;
+  background-color: rgba(152, 251, 152, 0.164);
+  border: 1px solid palegreen;
+  margin: .5rem auto;
+  padding: 1rem;
+  width: 60%;
+}
+
+.search-result-card:hover {
+  cursor: pointer;
+  color:aqua;
+  filter: sepia(0%);
+}
+
+input {
+  width: 215px;
+}
+
+@media (max-width: 650px) {
+  .header-container h2 {
+    margin: 1rem;
+  }
+  .search-result-card {
+    padding: .2rem;
+  }
+}
