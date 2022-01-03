@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 
+import IsGoodCheckAndSubmit from "../components/IsGoodCheckAndSubmit";
+
 const initialMovieObject = {
     imdb_id: '',
     title: '',
@@ -15,7 +17,12 @@ function SearchResults({ results  }) {
     const [movieToPost, setMovieToPost] = useState(initialMovieObject);
 
     const handleAddMovieTodb = (e) => {
-        e.preventDefault();
+        if (e.target.type === 'checkbox') {
+            return
+        }
+
+        const checkbox = document.querySelectorAll(`.${e.target.id}`);
+        checkbox.forEach(elem => elem.classList.toggle('hidden'));
 
         const options = {
             method: 'GET',
@@ -44,6 +51,7 @@ function SearchResults({ results  }) {
             {!results ? undefined : results.map((res, i) => {
                 return (
                     <div key={i} id={res.imdb_id} className="search-result-card" onClick={handleAddMovieTodb}>
+                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} isGood={movieToPost} idClass={res.imdb_id} />
                         <span id={res.imdb_id}>{res.title}</span>
                     </div>
                 )
