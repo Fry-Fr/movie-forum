@@ -8,7 +8,7 @@ function MovieCard({ movies }) {
             <Link to={`/movie/${movie.movie_id}`} key={i} className="movie-card-link">
                 <div className="movie-card">
                     <span>{movie.title}</span>
-                    <span>{movie.good ? '👍' : '👎'}</span>
+                    <span>{movie.is_good ? '👍' : '👎'}</span>
                     <span>{movie.rating}</span>
                     <span>{movie.description}</span>
                 </div>
