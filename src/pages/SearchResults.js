@@ -1,9 +1,22 @@
+import { useState } from "react";
 import axios from "axios";
 
-function SearchResults({ results }) {
+const initialMovieObject = {
+    imdb_id: '',
+    title: '',
+    image_url: '',
+    rating: '',
+    release_date: '',
+    description: '',
+    is_good: false
+}
+
+function SearchResults({ results  }) {
+    const [movieToPost, setMovieToPost] = useState(initialMovieObject);
+
     const handleAddMovieTodb = (e) => {
-        e.stopPropagation();
-        console.log('imdb_id', e.target.id, e.target)
+        e.preventDefault();
+
         const options = {
             method: 'GET',
             url: `https://data-imdb1.p.rapidapi.com/movie/id/${e.target.id}/`,
@@ -13,7 +26,15 @@ function SearchResults({ results }) {
             }
           };
         axios.request(options).then(response => {
-            console.log(response.data)
+            setMovieToPost({
+                imdb_id: response.data.results.imdb_id,
+                title: response.data.results.title,
+                image_url: response.data.results.image_url,
+                rating: response.data.results.rating,
+                release_date: response.data.results.release,
+                description: response.data.results.description,
+                is_good: null
+            })
         }).catch(error => console.log(error))
     }
 
