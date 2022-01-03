@@ -136,7 +136,6 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  min-height: 85%;
 }
 
 .movie-page-body {
@@ -162,6 +161,7 @@
 
 .movie-poster {
   border: 1px ridge #000;
+  border-radius: .2rem;
   filter: drop-shadow(-1rem .25rem .5rem #000);
   width: 75%;
   margin-bottom: 1rem;
@@ -169,9 +169,10 @@
 
 .empty-image {
   color: #282c34;
-  padding: 1rem;
   background-color: rgba(152, 251, 152, 0.274);
   border: 1px solid palegreen;
   border-radius: .2rem;
   filter: sepia(30%);
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
