@@ -5,7 +5,7 @@ function MovieCard({ movies }) {
        <>
        {!movies ? undefined : movies.map((movie, i) => {
            return(
-            <Link to={`/movie/${movie.id}`} key={i} className="movie-card-link">
+            <Link to={`/movie/${movie.movie_id}`} key={i} className="movie-card-link">
                 <div className="movie-card">
                     <span>{movie.title}</span>
                     <span>{movie.good ? '👍' : '👎'}</span>

@@ -5,7 +5,7 @@ function Movie({ setCompon, apiMovies }) {
     const [movie, setMovie] = useState();
     const { id } = useParams();
     useEffect(() => {
-        const _movie = apiMovies.filter(movie => movie.id === Number(id))
+        const _movie = apiMovies.filter(movie => movie.movie_id === Number(id))
         setMovie(_movie[0])
         if (movie) {
             setCompon(`<${movie.title}/>`)
