@@ -21,8 +21,6 @@ function SearchResults({ results  }) {
             return
         }
 
-        console.log(e.target)
-
         const checkbox = document.querySelectorAll(`.${e.target.id}`);
         checkbox.forEach(elem => elem.classList.toggle('hidden'));
 
@@ -42,7 +40,7 @@ function SearchResults({ results  }) {
                 rating: JSON.stringify(response.data.results.rating),
                 release_date: response.data.results.release,
                 description: response.data.results.description,
-                is_good: null
+                is_good: false
             })
         }).catch(error => console.log(error))
     }
@@ -53,7 +51,7 @@ function SearchResults({ results  }) {
             {!results ? undefined : results.map((res, i) => {
                 return (
                     <div key={i} id={res.imdb_id} className="search-result-card" onClick={handleAddMovieTodb}>
-                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} isGood={movieToPost} idClass={res.imdb_id} />
+                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} movieToPost={movieToPost} idClass={res.imdb_id} />
                         <span id={res.imdb_id}>{res.title}</span>
                     </div>
                 )
