@@ -17,7 +17,7 @@ function SearchResults({ results  }) {
     const [movieToPost, setMovieToPost] = useState(initialMovieObject);
 
     const handleAddMovieTodb = (e) => {
-        if (e.target.type === 'checkbox') {
+        if (e.target.type === 'checkbox'|| e.target.type === 'submit') {
             return
         }
 
@@ -37,7 +37,7 @@ function SearchResults({ results  }) {
                 imdb_id: response.data.results.imdb_id,
                 title: response.data.results.title,
                 image_url: response.data.results.image_url,
-                rating: response.data.results.rating,
+                rating: JSON.stringify(response.data.results.rating),
                 release_date: response.data.results.release,
                 description: response.data.results.description,
                 is_good: null
