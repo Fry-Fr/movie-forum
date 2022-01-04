@@ -17,9 +17,11 @@ function SearchResults({ results  }) {
     const [movieToPost, setMovieToPost] = useState(initialMovieObject);
 
     const handleAddMovieTodb = (e) => {
-        if (e.target.type === 'checkbox'|| e.target.type === 'submit') {
+        if (e.target.type === 'checkbox'|| e.target.type === 'submit' || e.target.tagName === 'FORM') {
             return
         }
+
+        console.log(e.target)
 
         const checkbox = document.querySelectorAll(`.${e.target.id}`);
         checkbox.forEach(elem => elem.classList.toggle('hidden'));
