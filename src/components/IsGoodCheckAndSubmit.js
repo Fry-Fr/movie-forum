@@ -12,7 +12,9 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
 
     const handleAddMovie = (e) => {
         e.preventDefault();
-        console.log("POST-DATA:", movieToPost)
+        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost).then(res => {
+            window.location.reload();
+        }).catch(error => console.log(error))
     }
 
 
