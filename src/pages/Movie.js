@@ -1,3 +1,4 @@
+import axios from "axios";
 import {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 
@@ -5,10 +6,21 @@ function Movie({ setCompon, apiMovies }) {
     const [movie, setMovie] = useState();
     const { id } = useParams();
     useEffect(() => {
-        const _movie = apiMovies.filter(movie => movie.movie_id === Number(id))
-        setMovie(_movie[0])
+        if (!movie) {
+            const _movie = apiMovies.filter(movie => movie.movie_id === Number(id))
+            setMovie(_movie[0])
+        }
         if (movie) {
             setCompon(`<${movie.title}/>`)
+            if (movie.image_url === "") {
+                return
+            }
+            axios.get(movie.image_url).then(res => {
+                console.log("image response: ", res.status)
+            }).catch(error => {
+                console.log("Image Error")
+                setMovie({...movie, 'image_url': ""})
+            })
         }
     },[setCompon, apiMovies, id, movie])
 
