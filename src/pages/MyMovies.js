@@ -7,7 +7,7 @@ function MyMovies({ setCompon, apiMovies }) {
     },[setCompon])
 
     return (
-        <div>
+        <div className="movie-card-container">
             <MovieCard movies={apiMovies} />
         </div>
     )

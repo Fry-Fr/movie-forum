@@ -7,7 +7,7 @@ function NotGoodMovies({ setCompon, apiMovies }) {
     },[setCompon])
 
     return (
-        <div>
+        <div className="movie-card-container">
             <MovieCard movies={apiMovies.filter(movie => movie.is_good === false)} />
         </div>
     )
