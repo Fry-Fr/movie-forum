@@ -32,7 +32,7 @@ function Movie({ setCompon, apiMovies }) {
                 <div>IDMB Rating: {movie.rating}</div>
                 <div>Description:<br/>{movie.description}</div>
             </div>
-                {!movie.image_url ? <div className="empty-image">Image not found</div> : <img src={movie.image_url} alt="movie poster" className="movie-poster"/>}
+                {!movie.image_url ? <div className="empty-image">Image not found</div> : <img src={movie.image_url} alt="movie poster" className="movie-poster" crossOrigin="use-credentials"/>}
             </>
             }
         </div>
