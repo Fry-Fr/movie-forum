@@ -30,7 +30,7 @@ function Movie({ setCompon, apiMovies }) {
             <>
             <div className="movie-page-body">
                 <div>IDMB Rating: {movie.rating}</div>
-                <div>Description:<br/>{movie.description}</div>
+                <div><u>Description</u>:<br/><p>{movie.description}</p></div>
             </div>
                 {!movie.image_url ? <div className="empty-image">Image not found</div> : <img crossOrigin="*" src={movie.image_url} alt="movie poster" className="movie-poster" />}
             </>

@@ -160,8 +160,15 @@
 }
 
 .movie-page-body div:nth-child(2) {
+  text-align: center;
   width: 75%;
   margin: 0 auto;
+}
+
+.movie-page-body p {
+  text-align: left;
+  text-indent: 1.5rem;
+  padding: 0;
 }
 
 .movie-poster {
