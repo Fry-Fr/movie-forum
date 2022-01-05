@@ -5,7 +5,11 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
     const handleChange = (e) => {
         e.stopPropagation();
         if (e.target.type === "checkbox") {
-            setIsGood({...movieToPost, [e.target.name]: e.target.checked})
+            if (e.target.name === "is_notgood") {
+                setIsGood({...movieToPost, "is_good": !e.target.checked})
+            }else {
+                setIsGood({...movieToPost, [e.target.name]: e.target.checked})
+            }
             return
         }
     }
@@ -26,7 +30,7 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
                     <input type="checkbox" name="is_good" checked={movieToPost.is_good} className={`hidden ${idClass}`} onChange={handleChange} />
                 </label>
                 <label htmlFor="is_good">no
-                    <input type="checkbox" name="is_notgood" checked={movieToPost.is_notgood} className={`hidden ${idClass}`} onChange={handleChange} />
+                    <input type="checkbox" name="is_notgood" checked={movieToPost.is_good === null ? false : !movieToPost.is_good} className={`hidden ${idClass}`} onChange={handleChange} />
                 </label>
                 </div>
             </form>

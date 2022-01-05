@@ -10,8 +10,7 @@ const initialMovieObject = {
     rating: '',
     release_date: '',
     description: '',
-    is_good: false,
-    is_notgood: false
+    is_good: null
 }
 
 function SearchResults({ results  }) {
@@ -41,8 +40,7 @@ function SearchResults({ results  }) {
                 rating: JSON.stringify(response.data.results.rating),
                 release_date: response.data.results.release,
                 description: response.data.results.description,
-                is_good: false,
-                is_notgood: false
+                is_good: null
             })
         }).catch(error => console.log(error))
     }
