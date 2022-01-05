@@ -8,10 +8,20 @@ import NotGoodMovies from "../pages/NotGoodMovies";
 import Movie from "../pages/Movie";
 import SearchBox from "./SearchBox";
 
-function Forum({ sb }) {
+function Forum() {
     const [apiMovies, setApiMovies] = useState([]);
     const [loadedComponent, setLoadedComponent] = useState('');
+    const [searchBox, setSearchBox] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.addEventListener("keypress", (e) => {
+          e.stopPropagation();
+          if (e.key === 'S') {
+            setSearchBox(!searchBox)
+          }
+        })
+      },[searchBox])
 
     
     useEffect(() => {
@@ -26,7 +36,7 @@ function Forum({ sb }) {
     return (
         <main className="main-container">
             <div className="forum-container">
-                {!sb ? <p>{loadedComponent}</p> : <SearchBox />}
+                {!searchBox ? <p>{loadedComponent}</p> : <SearchBox />}
                 <Routes>
                     <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                     <Route path="/good" element={<GoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
