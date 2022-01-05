@@ -20,10 +20,17 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
 
     return (
         <div className='form'>
-        <form className={`hidden ${idClass}`}>is good?
-            <input type="checkbox" name="is_good" checked={movieToPost.is_good} className={`hidden ${idClass}`} onChange={handleChange} />
-        </form>
-        <button className={`hidden ${idClass}`} onClick={handleAddMovie}>add</button>
+            <form className={`hidden ${idClass}`}>was it good?
+                <div>
+                <label htmlFor="is_good">yes
+                    <input type="checkbox" name="is_good" checked={movieToPost.is_good} className={`hidden ${idClass}`} onChange={handleChange} />
+                </label>
+                <label htmlFor="is_good">no
+                    <input type="checkbox" name="is_notgood" checked={movieToPost.is_notgood} className={`hidden ${idClass}`} onChange={handleChange} />
+                </label>
+                </div>
+            </form>
+            <button className={`hidden ${idClass}`} onClick={handleAddMovie}>add</button>
         </div>
     )
 }
