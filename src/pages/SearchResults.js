@@ -36,7 +36,7 @@ function SearchResults({ results  }) {
             setMovieToPost({
                 imdb_id: response.data.results.imdb_id,
                 title: response.data.results.title,
-                image_url: response.data.results.image_url,
+                image_url: response.data.results.banner,
                 rating: JSON.stringify(response.data.results.rating),
                 release_date: response.data.results.release,
                 description: response.data.results.description,
