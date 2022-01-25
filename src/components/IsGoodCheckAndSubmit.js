@@ -20,6 +20,14 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
             window.location.reload();
         }).catch(error => console.log(error))
     }
+    const handleAddMovieWatchLater = (e) => {
+        e.preventDefault();
+        movieToPost.title = "(watch-later)" + movieToPost.title;
+        movieToPost.is_good = null;
+        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost).then(res => {
+            window.location.reload();
+        }).catch(error => console.log(error))
+    }
 
 
     return (
@@ -34,7 +42,10 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
                 </label>
                 </div>
             </form>
-            <button className={`hidden ${idClass}`} onClick={handleAddMovie}>add</button>
+            <div style={{"flexBasis":"5%", "display":"flex", "flexDirection":"column"}}>
+                <button className={`hidden ${idClass}`} onClick={handleAddMovie}>submit</button>
+                <button className={`hidden ${idClass}`} onClick={handleAddMovieWatchLater}>watch later</button>
+            </div>
         </div>
     )
 }
