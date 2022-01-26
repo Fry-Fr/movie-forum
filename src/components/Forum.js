@@ -3,8 +3,7 @@ import {Routes, Route, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 import MyMovies from "../pages/MyMovies";
-import GoodMovies from "../pages/GoodMovies";
-import NotGoodMovies from "../pages/NotGoodMovies";
+import WatchList from "../pages/WatchList";
 import Movie from "../pages/Movie";
 import SearchBox from "./SearchBox";
 
@@ -39,8 +38,7 @@ function Forum() {
                 {!searchBox ? <p>{loadedComponent}</p> : <SearchBox />}
                 <Routes>
                     <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
-                    <Route path="/good" element={<GoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
-                    <Route path="/not_good" element={<NotGoodMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
+                    <Route path="/watch_list" element={<WatchList apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                     <Route path="/movie/:id" element={<Movie apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                 </Routes>
             </div>

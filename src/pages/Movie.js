@@ -11,6 +11,9 @@ function Movie({ setCompon, apiMovies }) {
             setMovie(_movie[0])
         }
         if (movie) {
+            if (movie.title.substring(0,13) === "(watch-later)") {
+                movie.title = movie.title.substring(13)
+            }
             setCompon(`<${movie.title}/>`)
             if (movie.image_url === "") {
                 return

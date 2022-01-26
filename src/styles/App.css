@@ -28,8 +28,7 @@
   color: rgb(146, 146, 146);
 }
 
-.nav-container a:nth-child(1)::after,
-.nav-container a:nth-child(2)::after {
+.nav-container a:nth-child(1)::after {
   content: " | ";
   color: rgba(245, 245, 220, 0.787);
 }

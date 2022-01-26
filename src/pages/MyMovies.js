@@ -8,7 +8,7 @@ function MyMovies({ setCompon, apiMovies }) {
 
     return (
         <div className="movie-card-container">
-            <MovieCard movies={apiMovies} />
+            <MovieCard movies={apiMovies.filter(movie => movie.title.substring(0,13) !== "(watch-later)")} />
         </div>
     )
 }
