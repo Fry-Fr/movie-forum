@@ -6,8 +6,10 @@ import MyMovies from "../pages/MyMovies";
 import WatchList from "../pages/WatchList";
 import Movie from "../pages/Movie";
 import SearchBox from "./SearchBox";
+import LoadingSpinner from "./LoadingSpinner"
 
 function Forum() {
+    const [loading, setLoading] = useState(false);
     const [apiMovies, setApiMovies] = useState([]);
     const [loadedComponent, setLoadedComponent] = useState('');
     const [searchBox, setSearchBox] = useState(false);
@@ -27,8 +29,12 @@ function Forum() {
         if (loadedComponent === '') {
             navigate("/my_movies");
         }
+        if (apiMovies.length === 0) {
+            setLoading(true);
+        }
         axios.get('https://movie-forum-api.herokuapp.com/movies/').then(response => {
             setApiMovies(response.data)
+            setLoading(false);
         }).catch(err => console.log(err))
     },[loadedComponent, navigate])
     
@@ -36,6 +42,7 @@ function Forum() {
         <main className="main-container">
             <div className="forum-container">
                 {!searchBox ? <p>{loadedComponent}</p> : <SearchBox />}
+                {loading ? <LoadingSpinner /> : undefined}
                 <Routes>
                     <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                     <Route path="/watch_list" element={<WatchList apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
