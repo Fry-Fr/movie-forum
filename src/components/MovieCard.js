@@ -31,7 +31,7 @@ function MovieCard({ movies }) {
                     <span>{handleIsGoodRatings(movie.is_good)}</span>
                     <span>{movie.rating}</span>
                     <span>{movie.description}</span>
-                    <button id={movie.movie_id} className="movie-card-remove-btn" onClick={handleRemove}>x</button>
+                    <button id={movie.movie_id} className="movie-card-remove-btn" onClick={handleRemove} title="Delete">x</button>
                 </div>
             </Link>
            )
