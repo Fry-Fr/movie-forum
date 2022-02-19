@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function MovieCard({ movies }) {
     const handleIsGoodRatings = (bool) => {
@@ -11,6 +12,15 @@ function MovieCard({ movies }) {
         }
     }
 
+    const handleRemove = (e) => {
+        e.preventDefault();
+        const movieId = parseInt(e.target.id);
+        axios.delete(`https://movie-forum-api.herokuapp.com/movies/${movieId}`).then(response => {
+            console.log(response.data.message)
+            window.location.reload();
+        }).catch(err => console.log(err))
+    }
+
     return (
        <>
        {!movies ? undefined : movies.map((movie, i) => {
@@ -21,6 +31,7 @@ function MovieCard({ movies }) {
                     <span>{handleIsGoodRatings(movie.is_good)}</span>
                     <span>{movie.rating}</span>
                     <span>{movie.description}</span>
+                    <button id={movie.movie_id} className="movie-card-remove-btn" onClick={handleRemove}>x</button>
                 </div>
             </Link>
            )
