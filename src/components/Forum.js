@@ -36,7 +36,7 @@ function Forum() {
             setApiMovies(response.data)
             setLoading(false);
         }).catch(err => console.log(err))
-    },[loadedComponent, navigate])
+    },[loadedComponent, navigate, loading])
     
     return (
         <main className="main-container">
