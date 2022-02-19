@@ -108,7 +108,7 @@
 
 .movie-card-link {
   text-decoration: none;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -137,7 +137,7 @@
   font-size: 100%;
   background: rgba(0, 0, 0, 0.178);
   border: 1px solid black;
-  border-radius: .2rem;
+  border-radius: 40% 40%;
   color: red;
   padding: .2rem;
 }
@@ -280,12 +280,35 @@ form {
   margin-bottom: .4rem;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 900px) {
   .header-container h2 {
     margin: 1rem;
   }
   .search-result-card {
     padding: .2rem;
+  }
+  .movie-card {
+    padding: .5rem 1rem;
+  }
+  .movie-card span:nth-child(4) {
+    left: 68%;
+  }
+  .forum-container {
+    width: 95%;
+  }
+  .movie-card-remove-btn {
+    font-size: .75rem;
+    padding-left: .25rem;
+  }
+}
+@media (max-width: 600px) {
+  .movie-card span:nth-child(4) {
+    left: 63%;
+  }
+}
+@media (max-width: 300px) {
+  .movie-card span:nth-child(4) {
+    left: 60%;
   }
 }
 
