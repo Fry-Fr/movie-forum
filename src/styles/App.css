@@ -97,6 +97,7 @@
   position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-right: 1px solid plum;
   border-left: 1px solid plum;
   background-color: rgba(113, 253, 206, 0.171);
@@ -135,10 +136,10 @@
   line-height: 1;
   cursor: pointer;
   font-size: 100%;
-  background: rgba(0, 0, 0, .15);
-  border: 1px solid rgba(0, 0, 0, .15);
+  background: none;
+  border: none;
   border-radius: 40% 40%;
-  color: red;
+  color: rgb(193, 52, 52);
   padding: .2rem;
 }
 
