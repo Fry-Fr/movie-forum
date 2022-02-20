@@ -12,8 +12,8 @@
 }
 
 .nav-container {
+  position: relative;
   text-align: left;
-  /* styles keep */
   width: 75%;
   max-width: 1200px;
 }
@@ -237,6 +237,16 @@
   flex-direction: column;
 }
 
+.toggle-search-btn {
+  position: absolute;
+  right: 0%;
+  bottom: 10%;
+  cursor: pointer;
+  background-color: rgba(85, 159, 85, 0.71);
+  border: 1px solid rgba(85, 159, 85, 0.71);
+  border-radius: 1rem;
+}
+
 input {
   width: 215px;
 }
@@ -306,8 +316,11 @@ form {
   .movie-card span:nth-child(4) {
     left: 63%;
   }
+  .toggle-search-btn {
+    transform: scale(85%);
+  }
 }
-@media (max-width: 300px) {
+@media (max-width: 400px) {
   .movie-card span:nth-child(4) {
     left: 60%;
   }
