@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import SearchResults from "../pages/SearchResults";
 
 function SearchBox() {
-    const [searchValues, setSearchValue] = useState([])
+    const [searchResults, setSearchResults] = useState([]);
+    const [search, setSearch] = useState('');
 
     const searchReq = (string) => {
         const options = {
@@ -15,25 +16,33 @@ function SearchBox() {
               'x-rapidapi-key': '5a7004bf33mshe25977a0a22602cp172ef1jsn8587be47b445'
             }
           };
-          
         return options;
     }
     
     const handleSearch = (e) => {
         e.preventDefault();
-        if (e.target.value.length > 0) {
-            axios.request(searchReq(e.target.value)).then(function (response) {
-                setSearchValue(response.data.results)
-            }).catch(function (error) {
-                console.error(error);
-            });
-        }
+        setSearch(e.target.value);
     }
+
+    useEffect(() => {
+        if (search.length > 0) {
+            const stopTimeout = setTimeout(() => {
+                axios.request(searchReq(search)).then(function (response) {
+                    setSearchResults(response.data.results)
+                }).catch(function (error) {
+                    console.error(error);
+                });
+            },1000)
+            return () => clearTimeout(stopTimeout);
+        }else {
+            setSearchResults([]);
+        }
+    },[search])
 
     return (
         <>
-        <input type="text" name="search" placeholder="Search..." onChange={handleSearch} />
-        <SearchResults results={searchValues} />
+        <input type="text" name="search" placeholder="Search..." onChange={handleSearch} autoFocus/>
+        <SearchResults results={searchResults} />
         </>
     )
 }
