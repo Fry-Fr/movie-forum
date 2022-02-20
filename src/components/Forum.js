@@ -16,12 +16,15 @@ function Forum() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        document.addEventListener("keypress", (e) => {
-          e.stopPropagation();
-          if (e.key === 'S') {
-            setSearchBox(!searchBox)
-          }
-        })
+        const searchButton = document.querySelector('.toggle-search-btn');
+        searchButton.addEventListener('click', (e) => {
+            setSearchBox(!searchBox);
+        });
+        if (searchBox === true) {
+            searchButton.textContent = 'close search';
+        }else {
+            searchButton.textContent = 'search';
+        }
       },[searchBox])
 
     

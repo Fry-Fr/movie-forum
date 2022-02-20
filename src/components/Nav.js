@@ -5,6 +5,7 @@ function Nav() {
         <nav className="nav-container">
             <Link to="/my_movies">My Movies</Link>
             <Link to="/watch_list">watch list</Link>
+            <button className='toggle-search-btn'></button>
         </nav>
     )
 }
