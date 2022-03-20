@@ -17,6 +17,12 @@ function Forum() {
 
     useEffect(() => {
         const searchButton = document.querySelector('.toggle-search-btn');
+        if (loading === undefined || loading === true) {
+            searchButton.style.display = 'none';
+        }
+        if (loading === false) {
+            searchButton.style.display = 'inline-block';
+        }
         searchButton.addEventListener('click', (e) => {
             setSearchBox(!searchBox);
         });
@@ -25,8 +31,7 @@ function Forum() {
         }else {
             searchButton.textContent = 'search';
         }
-      },[searchBox])
-
+      },[searchBox, loading])
     
     useEffect(() => {
         if (loadedComponent === '') {
@@ -44,7 +49,7 @@ function Forum() {
     return (
         <main className="main-container">
             <div className="forum-container">
-                {!searchBox ? <p>{loadedComponent}</p> : <SearchBox />}
+                {!searchBox ? <p>{loading === false ? loadedComponent : undefined}</p> : <SearchBox />}
                 {loading ? <LoadingSpinner /> : undefined}
                 {loading === false && apiMovies.length === 0 ? <p>database is empty!</p> : undefined}
                 <Routes>
