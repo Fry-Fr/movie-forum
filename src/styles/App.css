@@ -312,6 +312,14 @@ form {
     padding-left: .25rem;
   }
 }
+@media (max-width: 650px) {
+  .movie-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 170px;
+  }
+}
 @media (max-width: 600px) {
   .movie-card span:nth-child(4) {
     left: 63%;
@@ -320,9 +328,31 @@ form {
     transform: scale(85%);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 420px) {
+  .movie-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 130px;
+  }
   .movie-card span:nth-child(4) {
     left: 60%;
+  }
+}
+@media (max-width: 350px) {
+  .movie-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100px;
+  }
+}
+@media (max-width: 280px) {
+  .movie-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 70px;
   }
 }
 
