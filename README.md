@@ -1,9 +1,9 @@
 # My Movie db
 ### Client
-- [x] - make functional UI
-- [x] - uses free api from rapid.api to implement search by title feature.
+- [x] - make functional UI in React / State management using React hooks.
+- [x] - using free api from rapid.api to implement search by title feature.
 ### Backend
-- [x] - build Nodejs API
+- [x] - Nodejs/Express API
 - [x] - postgresql db
 #### Using axios to call free (unofficial) IMDB api found from rapid.api
 - Pressing the search button will display a Search box...
