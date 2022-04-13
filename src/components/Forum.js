@@ -13,6 +13,7 @@ function Forum() {
     const [apiMovies, setApiMovies] = useState([]);
     const [loadedComponent, setLoadedComponent] = useState('');
     const [searchBox, setSearchBox] = useState(false);
+    const [token, setToken] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -40,21 +41,34 @@ function Forum() {
         if (loading === undefined) {
             setLoading(true);
         }
-        axios.get('https://movie-forum-api.herokuapp.com/movies/').then(response => {
-            setApiMovies(response.data)
-            setLoading(false);
-        }).catch(err => console.log(err))
-    },[loadedComponent, navigate, loading])
+        if (token === '') {
+            axios.post('https://movie-forum-api.herokuapp.com/api/auth', {
+                username: process.env.REACT_APP_USERNAME,
+                password: process.env.REACT_APP_PASSWORD
+            }).then(res => setToken(res.data.token))
+            .catch(err => console.error(err))
+        }
+        if (token !== '') {
+            axios.get('https://movie-forum-api.herokuapp.com/movies/',{
+                headers: {
+                    Authorization: token
+                }
+            }).then(response => {
+                setApiMovies(response.data)
+                setLoading(false);
+            }).catch(err => console.log(err))
+        }
+    },[loadedComponent, navigate, loading, token])
     
     return (
         <main className="main-container">
             <div className="forum-container">
-                {!searchBox ? <p>{loading === false ? loadedComponent : undefined}</p> : <SearchBox />}
+                {!searchBox ? <p>{loading === false ? loadedComponent : undefined}</p> : <SearchBox auth={token} />}
                 {loading ? <LoadingSpinner /> : undefined}
                 {loading === false && apiMovies.length === 0 ? <p>database is empty!</p> : undefined}
                 <Routes>
-                    <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
-                    <Route path="/watch_list" element={<WatchList apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
+                    <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} auth={token} />} />
+                    <Route path="/watch_list" element={<WatchList apiMovies={apiMovies} setCompon={setLoadedComponent} auth={token} />} />
                     <Route path="/movie/:id" element={<Movie apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                 </Routes>
             </div>

@@ -1,6 +1,8 @@
 import axios from "axios";
 
-function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
+function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass, auth }) {
+
+    const token = auth;
 
     const handleChange = (e) => {
         e.stopPropagation();
@@ -16,7 +18,11 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
 
     const handleAddMovie = (e) => {
         e.preventDefault();
-        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost).then(res => {
+        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
             window.location.reload();
         }).catch(error => console.log(error))
     }
@@ -24,7 +30,11 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass }) {
         e.preventDefault();
         movieToPost.title = "(watch-later)" + movieToPost.title;
         movieToPost.is_good = null;
-        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost).then(res => {
+        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost, {
+            headers: {
+                Authorization: token
+            }
+        }).then(res => {
             window.location.reload();
         }).catch(error => console.log(error))
     }

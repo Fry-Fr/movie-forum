@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function MovieCard({ movies }) {
+function MovieCard({ movies, auth }) {
+
+    const token = auth;
+
     const handleIsGoodRatings = (bool) => {
         if (bool === null) {
             return undefined
@@ -15,7 +18,11 @@ function MovieCard({ movies }) {
     const handleRemove = (e) => {
         e.preventDefault();
         const movieId = parseInt(e.target.id);
-        axios.delete(`https://movie-forum-api.herokuapp.com/movies/${movieId}`).then(response => {
+        axios.delete(`https://movie-forum-api.herokuapp.com/movies/${movieId}`, {
+            headers: {
+                Authorization: token
+            }
+        }).then(response => {
             console.log(response.data.message)
             window.location.reload();
         }).catch(err => console.log(err))
