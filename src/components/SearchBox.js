@@ -3,7 +3,7 @@ import axios from "axios";
 
 import SearchResults from "../pages/SearchResults";
 
-function SearchBox() {
+function SearchBox({ auth }) {
     const [searchResults, setSearchResults] = useState([]);
     const [search, setSearch] = useState('');
 
@@ -42,7 +42,7 @@ function SearchBox() {
     return (
         <>
         <input type="text" name="search" placeholder="Search..." onChange={handleSearch} autoFocus/>
-        <SearchResults results={searchResults} />
+        <SearchResults results={searchResults} auth={auth} />
         </>
     )
 }
