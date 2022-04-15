@@ -13,7 +13,7 @@ const initialMovieObject = {
     is_good: null
 }
 
-function SearchResults({ results, auth }) {
+function SearchResults({ results, auth, setApiMovies, setSearchBox }) {
     const [movieToPost, setMovieToPost] = useState(initialMovieObject);
 
     const handleAddMovieTodb = (e) => {
@@ -51,7 +51,7 @@ function SearchResults({ results, auth }) {
             {!results ? undefined : results.map((res, i) => {
                 return (
                     <div key={i} id={res.imdb_id} className="search-result-card" onClick={handleAddMovieTodb}>
-                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} movieToPost={movieToPost} idClass={res.imdb_id} auth={auth} />
+                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} setApiMovies={setApiMovies} setSearchBox={setSearchBox} movieToPost={movieToPost} idClass={res.imdb_id} auth={auth} />
                         <span id={res.imdb_id}>{res.title}</span>
                     </div>
                 )

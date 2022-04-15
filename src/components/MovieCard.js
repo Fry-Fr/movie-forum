@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function MovieCard({ movies, auth }) {
+function MovieCard({ movies, setApiMovies, auth }) {
 
     const token = auth;
 
@@ -24,7 +24,13 @@ function MovieCard({ movies, auth }) {
             }
         }).then(response => {
             console.log(response.data.message)
-            window.location.reload();
+            axios.get('https://movie-forum-api.herokuapp.com/movies/',{
+                headers: {
+                    Authorization: token
+                }
+            }).then(response => {
+                setApiMovies(response.data)
+            }).catch(err => console.log(err))
         }).catch(err => console.log(err))
     }
 

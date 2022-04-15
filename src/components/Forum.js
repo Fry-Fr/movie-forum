@@ -63,12 +63,12 @@ function Forum() {
     return (
         <main className="main-container">
             <div className="forum-container">
-                {!searchBox ? <p>{loading === false ? loadedComponent : undefined}</p> : <SearchBox auth={token} />}
+                {!searchBox ? <p>{loading === false ? loadedComponent : undefined}</p> : <SearchBox setApiMovies={setApiMovies} setSearchBox={setSearchBox} auth={token} />}
                 {loading ? <LoadingSpinner /> : undefined}
                 {loading === false && apiMovies.length === 0 ? <p>database is empty!</p> : undefined}
                 <Routes>
-                    <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setCompon={setLoadedComponent} auth={token} />} />
-                    <Route path="/watch_list" element={<WatchList apiMovies={apiMovies} setCompon={setLoadedComponent} auth={token} />} />
+                    <Route path="/my_movies" element={<MyMovies apiMovies={apiMovies} setApiMovies={setApiMovies} setCompon={setLoadedComponent} auth={token} />} />
+                    <Route path="/watch_list" element={<WatchList apiMovies={apiMovies} setApiMovies={setApiMovies} setCompon={setLoadedComponent} auth={token} />} />
                     <Route path="/movie/:id" element={<Movie apiMovies={apiMovies} setCompon={setLoadedComponent} />} />
                 </Routes>
             </div>
