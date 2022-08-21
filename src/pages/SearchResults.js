@@ -26,9 +26,9 @@ function SearchResults({ results, auth, setApiMovies, setSearchBox }) {
 
         const options = {
             method: 'GET',
-            url: `https://data-imdb1.p.rapidapi.com/movie/id/${e.target.id}/`,
+            url: `https://moviesminidatabase.p.rapidapi.com/movie/id/${e.target.id}/`,
             headers: {
-              'x-rapidapi-host': 'data-imdb1.p.rapidapi.com',
+              'x-rapidapi-host': 'moviesminidatabase.p.rapidapi.com',
               'x-rapidapi-key': '5a7004bf33mshe25977a0a22602cp172ef1jsn8587be47b445'
             }
           };
