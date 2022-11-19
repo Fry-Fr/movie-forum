@@ -42,14 +42,14 @@ function Forum() {
             setLoading(true);
         }
         if (token === '') {
-            axios.post('https://movie-forum-api.herokuapp.com/api/auth', {
+            axios.post(`${process.env.REACT_APP_API_URL}api/auth`, {
                 username: process.env.REACT_APP_USERNAME,
                 password: process.env.REACT_APP_PASSWORD
             }).then(res => setToken(res.data.token))
             .catch(err => console.error(err))
         }
         if (token !== '') {
-            axios.get('https://movie-forum-api.herokuapp.com/movies/',{
+            axios.get(`${process.env.REACT_APP_API_URL}movies/`,{
                 headers: {
                     Authorization: token
                 }

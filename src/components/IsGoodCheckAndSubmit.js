@@ -18,12 +18,12 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass, setApiMovies, s
 
     const handleAddMovie = (e) => {
         e.preventDefault();
-        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost, {
+        axios.post(`${process.env.REACT_APP_API_URL}movies/`, movieToPost, {
             headers: {
                 Authorization: token
             }
         }).then(res => {
-            axios.get('https://movie-forum-api.herokuapp.com/movies/',{
+            axios.get(`${process.env.REACT_APP_API_URL}movies/`,{
                 headers: {
                     Authorization: token
                 }
@@ -37,12 +37,12 @@ function IsGoodCheckAndSubmit({ movieToPost, setIsGood, idClass, setApiMovies, s
         e.preventDefault();
         movieToPost.title = "(watch-later)" + movieToPost.title;
         movieToPost.is_good = null;
-        axios.post('https://movie-forum-api.herokuapp.com/movies/', movieToPost, {
+        axios.post(`${process.env.REACT_APP_API_URL}movies/`, movieToPost, {
             headers: {
                 Authorization: token
             }
         }).then(res => {
-            axios.get('https://movie-forum-api.herokuapp.com/movies/',{
+            axios.get(`${process.env.REACT_APP_API_URL}movies/`,{
                 headers: {
                     Authorization: token
                 }

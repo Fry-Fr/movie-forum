@@ -18,13 +18,13 @@ function MovieCard({ movies, setApiMovies, auth }) {
     const handleRemove = (e) => {
         e.preventDefault();
         const movieId = parseInt(e.target.id);
-        axios.delete(`https://movie-forum-api.herokuapp.com/movies/${movieId}`, {
+        axios.delete(`${process.env.REACT_APP_API_URL}movies/${movieId}`, {
             headers: {
                 Authorization: token
             }
         }).then(response => {
             console.log(response.data.message)
-            axios.get('https://movie-forum-api.herokuapp.com/movies/',{
+            axios.get(`${process.env.REACT_APP_API_URL}movies/`,{
                 headers: {
                     Authorization: token
                 }
