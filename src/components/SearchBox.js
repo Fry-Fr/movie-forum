@@ -7,14 +7,15 @@ function SearchBox({ setApiMovies, setSearchBox, auth }) {
     const [searchResults, setSearchResults] = useState([]);
     const [search, setSearch] = useState('');
 
-    const searchReq = (string) => {
+    const searchReq = (searchString) => {
         const options = {
             method: 'GET',
-            url: `https://moviesminidatabase.p.rapidapi.com/movie/imdb_id/byTitle/${string}/`,
+            url: 'https://imdb8.p.rapidapi.com/title/v2/find',
+            params: {title: searchString, titleType: 'movie', limit: '10', sortArg: 'moviemeter,asc'},
             headers: {
-              'x-rapidapi-host': 'moviesminidatabase.p.rapidapi.com',
-              'x-rapidapi-key': '5a7004bf33mshe25977a0a22602cp172ef1jsn8587be47b445'
-            }
+              'X-RapidAPI-Key': '5a7004bf33mshe25977a0a22602cp172ef1jsn8587be47b445',
+              'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
+            }      
           };
         return options;
     }

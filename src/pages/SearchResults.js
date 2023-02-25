@@ -26,20 +26,21 @@ function SearchResults({ results, auth, setApiMovies, setSearchBox }) {
 
         const options = {
             method: 'GET',
-            url: `https://moviesminidatabase.p.rapidapi.com/movie/id/${e.target.id}/`,
+            url: 'https://imdb8.p.rapidapi.com/title/get-overview-details',
+            params: {tconst: `${e.target.id}`, currentCountry: 'US'},
             headers: {
-              'x-rapidapi-host': 'moviesminidatabase.p.rapidapi.com',
-              'x-rapidapi-key': '5a7004bf33mshe25977a0a22602cp172ef1jsn8587be47b445'
+              'X-RapidAPI-Key': '5a7004bf33mshe25977a0a22602cp172ef1jsn8587be47b445',
+              'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
             }
           };
         axios.request(options).then(response => {
             setMovieToPost({
-                imdb_id: response.data.results.imdb_id,
-                title: response.data.results.title,
-                image_url: response.data.results.banner,
-                rating: JSON.stringify(response.data.results.rating),
-                release_date: response.data.results.release,
-                description: response.data.results.description,
+                imdb_id: e.target.id,
+                title: response.data.title.title,
+                image_url: response.data.title.image?.url,
+                rating: JSON.stringify(response.data.ratings?.rating),
+                release_date: response.data.releaseDate,
+                description: response.data.plotSummary?.text,
                 is_good: null
             })
         }).catch(error => console.log(error))
@@ -49,10 +50,11 @@ function SearchResults({ results, auth, setApiMovies, setSearchBox }) {
         <>
         <div className="search-result">
             {!results ? undefined : results.map((res, i) => {
+                res.id = res.id.replace("/title/", "").replace("/", "");
                 return (
-                    <div key={i} id={res.imdb_id} className="search-result-card" onClick={handleAddMovieTodb}>
-                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} setApiMovies={setApiMovies} setSearchBox={setSearchBox} movieToPost={movieToPost} idClass={res.imdb_id} auth={auth} />
-                        <span id={res.imdb_id}>{res.title}</span>
+                    <div key={i} id={res.id} className="search-result-card" onClick={handleAddMovieTodb}>
+                        <IsGoodCheckAndSubmit setIsGood={setMovieToPost} setApiMovies={setApiMovies} setSearchBox={setSearchBox} movieToPost={movieToPost} idClass={res.id} auth={auth} />
+                        <span id={res.id}>{res.title}</span>
                     </div>
                 )
             })}
